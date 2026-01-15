@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Nhập</h3>
+    <input id="nangMark" placeholder="nhap ki cua Mark" type="text">
+    <input id="caoMark" placeholder="nhap chieu cao cua Mark" type="text"> <br>
+    <input type="text" id="nangJohn" placeholder="nhap ki cua John">
+    <input type="text" id="caoJohn" placeholder="nhap chieu cao cua John">
+
+    <button id="Click" onclick="btn()">Tinh BMI</button>
+
+
+    <script>
+         function btn() {
+            var kiMark = parseFloat(document.getElementById("nangMark").value);
+            var caoMark = parseFloat(document.getElementById("caoMark").value); 
+            var kiJohn = parseFloat(document.getElementById("nangJohn").value)
+            var caoJohn = parseFloat(document.getElementById("caoJohn").value)
+
+            var BMImark = kiMark / (caoMark*caoMark) ;  
+            var BMIJohn = kiJohn / (caoJohn*caoJohn) ;  
+
+            let KQ = BMImark  > BMIJohn  ; 
+            if (KQ) {
+                console.log(`BMI cua mark (${BMImark}) > BMI cua John (${BMIJohn})`);
+            }else{
+                console.log(`BMI cua John (${BMIJohn}) > BMI cua mark (${BMImark})`);
+            }
+            
+         }
+    </script>
+    
+</body>
+</html>
