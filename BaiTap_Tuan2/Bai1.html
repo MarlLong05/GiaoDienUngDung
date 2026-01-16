@@ -6,32 +6,43 @@
     <title>Document</title>
 </head>
 <body>
-    <h3>Nhập</h3>
-    <input id="nangMark" placeholder="nhap ki cua Mark" type="text">
-    <input id="caoMark" placeholder="nhap chieu cao cua Mark" type="text"> <br>
-    <input type="text" id="nangJohn" placeholder="nhap ki cua John">
-    <input type="text" id="caoJohn" placeholder="nhap chieu cao cua John">
-
-    <button id="Click" onclick="btn()">Tinh BMI</button>
+    <h3>Nhap diem Doliphins</h3>
+    <input id="diem1_CH" placeholder="nhap diem1 CH" type="text">
+    <input id="diem2_CH" placeholder="nhap diem2 CH" type="text">
+    <input id="diem3_CH" placeholder="nhap diem3 CH" type="text"> 
+    <br>
+    <h3>Nhap diem Koalas</h3>
+    <input id="diem1_KL" placeholder="nhap diem1 KL" type="text">
+    <input id="diem2_KL" placeholder="nhap diem2 KL" type="text">
+    <input id="diem3_KL" placeholder="nhap diem3 KL" type="text"> 
+    <br> <br>
+    <button id="Click" onclick="btn()">Tinh Diem TB</button>
+    <input type="text" id="KQ" placeholder="Ket Qua">  
 
 
     <script>
          function btn() {
-            var kiMark = parseFloat(document.getElementById("nangMark").value);
-            var caoMark = parseFloat(document.getElementById("caoMark").value); 
-            var kiJohn = parseFloat(document.getElementById("nangJohn").value)
-            var caoJohn = parseFloat(document.getElementById("caoJohn").value)
+            var diem1CH = parseFloat(document.getElementById("diem1_CH").value);
+            var diem2CH = parseFloat(document.getElementById("diem2_CH").value);
+            var diem3CH = parseFloat(document.getElementById("diem3_CH").value);
 
-            var BMImark = kiMark / (caoMark*caoMark) ;  
-            var BMIJohn = kiJohn / (caoJohn*caoJohn) ;  
+            var diem1KL = parseFloat(document.getElementById("diem1_KL").value);
+            var diem2KL = parseFloat(document.getElementById("diem2_KL").value);
+            var diem3KL = parseFloat(document.getElementById("diem3_KL").value);
 
-            let KQ = BMImark  > BMIJohn  ; 
-            
+           var DiemTBCH = (diem1CH + diem2CH + diem3CH) / 3 ;
+           var DiemTBKL = (diem1KL + diem2KL + diem3KL) / 3 ;
 
-
-
-
-         }
+           let KQ = 0  ; 
+            if (DiemTBCH >= DiemTBKL *2){
+            KQ  =  "Đội Cá Heo chiến thắng: " + DiemTBCH 
+           }else  if(DiemTBKL >= DiemTBCH*2 ){
+            KQ = "Đội Koala chiến thắng : " + DiemTBKL ;
+            }else {
+            KQ = "Không đội nào thắng"
+            }
+            document.getElementById("KQ").value = KQ ; 
+    }
     </script>
     
 </body>
