@@ -1,0 +1,31 @@
+.btn{
+    padding: 3ch;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    border-radius: 20px;
+
+}
+.primary{
+    background-color: rgb(3, 126, 249);
+    color: white;
+}
+.primary:hover{
+    background-color: rgb(2, 53, 123);
+    color: white;
+}
+.danger{
+    background-color: rgb(249, 3, 3);
+    color: white;
+}
+.danger:hover{
+    background-color: rgb(123, 2, 2);
+    color: white;
+}
+.success{
+    background-color: rgb(3, 249, 54);
+    color: white;
+}
+.success:hover{
+    background-color: rgb(2, 123, 27);
+    color: white;
+}
