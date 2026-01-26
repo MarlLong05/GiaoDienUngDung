@@ -1,24 +1,49 @@
-import React from 'react'
 import './App.css'
-import ProductCard from './components/ProductCard.jsx'
-import Button from './components/Button.jsx'
-import Login from './components/Login.jsx'
-import ProductList from './components/ProductList.jsx'
-import Alert from './components/Alert.jsx'
-
+import Header from './components/Header'
+import StudentInf from './components/StudentInf'
+import Footer from './components/Footer'
 function App() {
+  const student = { 
+    name: "Nguyen Thanh Long", 
+    mssv: "23723141", 
+    classNameSV: "KTP19ATT"
+  }
+
   return (
-   <div className='products'>
-     <ProductCard /> <br />
+    <div className="products">
+      <Header className="header" />
+
+      <StudentInf
+        className="Info"
+        name={student.name}
+        mssv={student.mssv}
+        classNameSV={student.classNameSV}
+      />
+
+      <Footer className="footer" />
+
+
+
+      {/* <ProductCard /> <br />
       <Button type="primary">Primary</Button>
       <Button type="danger">Danger</Button>
       <Button type="success">Success</Button> 
       <Login></Login> 
       <ProductList></ProductList>
       <Alert></Alert>
+      <Header></Header> */}
 
-   </div>
+
+
+        
+    </div>
   )
+
+
+
 }
 
+
 export default App
+
+
