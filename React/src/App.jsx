@@ -2,45 +2,30 @@ import './App.css'
 import Header from './components/Header'
 import StudentInf from './components/StudentInf'
 import Footer from './components/Footer'
+import { useState } from 'react'
 function App() {
-  const student = { 
-    name: "Nguyen Thanh Long", 
-    mssv: "23723141", 
-    classNameSV: "KTP19ATT"
-  }
+    const [count, setCount] = useState(0);
+  const handleIncrease = () => {
+    setCount(count + 1);
+  };
+  const handleDecrease = () => {
+    setCount(count - 1);
+  };
+  const handleReset = () => {
+    setCount(0);
+  };
 
   return (
-    <div className="products">
-      <Header className="header" />
+    <div style={{ textAlign: "center", marginTop: "100px" }}>
+      <h1>Counter App</h1>
 
-      <StudentInf
-        className="Info"
-        name={student.name}
-        mssv={student.mssv}
-        classNameSV={student.classNameSV}
-      />
+      <h2>Giá trị: {count}</h2>
 
-      <Footer className="footer" />
-
-
-
-      {/* <ProductCard /> <br />
-      <Button type="primary">Primary</Button>
-      <Button type="danger">Danger</Button>
-      <Button type="success">Success</Button> 
-      <Login></Login> 
-      <ProductList></ProductList>
-      <Alert></Alert>
-      <Header></Header> */}
-
-
-
-        
+      <button onClick={handleIncrease}>+</button>
+      <button onClick={handleDecrease}>-</button>
+      <button onClick={handleReset}>Reset</button>
     </div>
-  )
-
-
-
+  );
 }
 
 
