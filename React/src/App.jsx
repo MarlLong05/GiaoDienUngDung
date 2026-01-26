@@ -1,34 +1,38 @@
 import './App.css'
-import Header from './components/Header'
-import StudentInf from './components/StudentInf'
-import Footer from './components/Footer'
 import { useState } from 'react'
 function App() {
-    const [count, setCount] = useState(0);
-  const handleIncrease = () => {
-    setCount(count + 1);
-  };
-  const handleDecrease = () => {
-    setCount(count - 1);
-  };
-  const handleReset = () => {
-    setCount(0);
-  };
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
 
   return (
-    <div style={{ textAlign: "center", marginTop: "100px" }}>
-      <h1>Counter App</h1>
+    <div className="container">
+      <h2>Form nhập thông tin</h2>
 
-      <h2>Giá trị: {count}</h2>
+      <div>
+        <label>Tên:</label>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </div>
 
-      <button onClick={handleIncrease}>+</button>
-      <button onClick={handleDecrease}>-</button>
-      <button onClick={handleReset}>Reset</button>
+      <div>
+        <label>Email:</label>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+
+      <hr />
+
+      <h3>Thông tin đã nhập:</h3>
+      <p>Tên: {name}</p>
+      <p>Email: {email}</p>
     </div>
-  );
+  )
 }
 
-
 export default App
-
-
