@@ -5,6 +5,7 @@ import './App.css'
 import CounterApp from './components/CounterApp'
 import Input from './components/Input'
 import StatusBadge from './components/StatusBadge'
+import TodoApp from './components/TodoApp'
 function App() {
 
   return (
@@ -13,7 +14,7 @@ function App() {
      <Header/> 
      <StudentInfo 
       name = "Nguyen Thanh Long"
-      mssv=  "23723141"
+      mssv=  "23723141" 
       lop = "DaHKTPM19ATT"/> 
      <Footer /> 
      </div> */}
@@ -25,7 +26,7 @@ function App() {
      {/* <Input />         Bai3 */}
 
      {/* <StatusBadge />   Bai 4 */}
-
+      <TodoApp /> 
     </>
     
   )
