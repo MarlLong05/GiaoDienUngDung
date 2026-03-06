@@ -1,0 +1,30 @@
+body{
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d9d4d4;
+}
+
+.thongtin{
+  width: 450px;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: #dfe7ef;
+  color: black;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.thongtin h2{
+  margin-bottom: 20px;
+}
+
+.thongtin p{
+  margin: 10px 0;
+}
+.btnCount{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
