@@ -1,0 +1,15 @@
+.btnClick{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+
+}
+.online{
+    color: aqua;
+}
+.off{
+    color: grey;
+}
+.bus{
+    color: red;
+}

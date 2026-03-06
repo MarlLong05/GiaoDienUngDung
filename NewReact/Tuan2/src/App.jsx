@@ -4,7 +4,7 @@ import StudentInfo from './components/StudentInfo'
 import './App.css'
 import CounterApp from './components/CounterApp'
 import Input from './components/Input'
-
+import StatusBadge from './components/StatusBadge'
 function App() {
 
   return (
@@ -22,7 +22,9 @@ function App() {
       <CounterApp /> 
      </div> */}
 
-     <Input /> 
+     {/* <Input />         Bai3 */}
+
+     {/* <StatusBadge />   Bai 4 */}
 
     </>
     
