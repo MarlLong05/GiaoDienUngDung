@@ -1,0 +1,75 @@
+/* ===== Container ===== */
+.container {
+  padding: 60px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== Alert ===== */
+.alert {
+  padding: 15px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  width: 300px;
+  margin: 0 auto 20px auto;
+  transition: 0.3s ease;
+}
+
+/* Alert colors */
+.alert-success {
+  background-color: #28a745;
+}
+
+.alert-warning {
+  background-color: #ffc107;
+  color: black;
+}
+
+.alert-error {
+  background-color: #dc3545;
+}
+
+/* ===== Button Group ===== */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* ===== Button Base ===== */
+.button-group button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  color: white;
+  transition: 0.3s ease;
+}
+
+/* Button colors theo type */
+.button-group button.success {
+  background-color: #28a745;
+}
+
+.button-group button.warning {
+  background-color: #ffc107;
+  color: black;
+}
+
+.button-group button.error {
+  background-color: #dc3545;
+}
+
+/* Hover */
+.button-group button:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+/* Button đang được chọn */
+.button-group button.active {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}

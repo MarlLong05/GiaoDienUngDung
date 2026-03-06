@@ -1,0 +1,58 @@
+body{
+    margin:  0 ; 
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    background-color: #b6b1b1;
+}
+.product-card {
+  width: 260px;
+  padding: 20px;
+  border-radius: 16px;              /* bo góc */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1); /* đổ bóng */
+  text-align: center;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);       /* nổi lên */
+  box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #000;
+}
+
+.product-time {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 14px;
+}
+
+.add-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #000;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.add-btn:hover {
+  background-color: #333;
+}
