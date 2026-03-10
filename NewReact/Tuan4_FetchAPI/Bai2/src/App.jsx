@@ -12,8 +12,8 @@ function App() {
         fetch("https://jsonplaceholder.typicode.com/users")
       .then(res => res.json())
       .then(data => {setData(data); setLoading(false)})
-      .catch(err =>{
-        setErr(err)
+      .catch(error =>{
+        setErr(error)
         setLoading(false)
       })
     },1000)
@@ -23,13 +23,17 @@ function App() {
   return (
     <>
     <div>
-      <h2 className='DanhSach'>Danh Sach List</h2>
-      {  loading ? ( <p>Loading</p> ) :
-           error ? ( <p> Error: {error.message}</p> ): 
-              ( datas.map(a =>(  
-              <p key={a.id}> Name: {a.name} <br /> 
-                              Email: {a.email}</p>
-       )) ) }
+          <h2 className='DanhSach'>Danh Sach List</h2>
+            {loading ? <p>Loading</p> : 
+                    error ?  <p>{error.message}</p> : 
+                    datas.map(a => (
+                      <p key={a.id}> Name: {a.name}
+                                    Email: {a.email}
+                      </p>
+                    ))
+             }
+
+
     </div>
       
     </>
