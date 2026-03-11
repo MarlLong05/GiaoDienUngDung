@@ -1,46 +1,37 @@
-// update today
-import { useState } from 'react'
-import './App.css'
-import { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
-function App() {
+const App = () => {
+   const [goc, setGoc] =  useState([])
+   const [sauLoc, setSauLoc] = useState([])
+   const [sreach , setSreach] = useState("")
 
-    const [goc, setGoc] = useState([])
-    const [locGoc, setLocGoc]  = useState([])
-    const [sreach, setSreach]  = useState("")
+  useEffect(()=>{
+    fetch("https://jsonplaceholder.typicode.com/posts")
+    .then(res => res.json())
+    .then(data => {setGoc(data); setSauLoc(data)})
+    
+  }, [])
 
+  const handleSreach = (e) =>{ 
+      const value = e.target.value
+      setSreach(value)
 
-    useEffect(() =>{
-
-      fetch("https://jsonplaceholder.typicode.com/posts")
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-        setGoc(data)
-        setLocGoc(data) 
-      })
-    }, [])
-
-    const handle  = (e) => {
-      const value = e.target.value 
-      setSreach(value) 
-
-      const kq = goc.filter(a => a.title.toLowerCase().includes(value.toLowerCase()))
-      setLocGoc(kq)
+      const kq = goc.filter((a) =>
+        a.title.toLowerCase().includes(value.toLowerCase())
+      )
+      setSauLoc(kq)
     }
-
-
+    
   return (
-    <>
-      <input type="text" onChange={handle} value={sreach} /> 
-      {locGoc.map(a => {
-        return(
-          <div>
-          <p key={a.id}> {a.title}</p>
+    <div>
+      <input type="text" value={sreach} onChange={handleSreach} />
+      {sauLoc.map((a) =>(
+        <div key={a.id}>
+          KQ :{a.title}
         </div>
-        )
-      })}
-    </>
+      ))}
+      
+    </div>
   )
 }
 
