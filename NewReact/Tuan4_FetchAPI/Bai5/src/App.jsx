@@ -1,69 +1,60 @@
+import React, { useEffect } from 'react'
 import { useState } from 'react'
-import './App.css'
-import { useEffect } from 'react'
 
-function App() {
-    const [todos, setTodo] = useState([])
-    const [title, setTitle] = useState("")
+const App = () => {
+  const [doto, setDoto] = useState([])
+  const [search, setSearch] = useState("")
+  const [title, setTitle] = useState("") 
+  const url = "https://jsonplaceholder.typicode.com/posts"
 
-    useEffect(() =>{
-        fetch("http://localhost:3000/todos")
-        .then(res => res.json())
-        .then(data => setTodo(data))
-    }, [])
+useEffect(() =>{
+    fetch(url)
+    .then(res => res.json())
+    .then(data => setDoto(data.filter(a=> a.title.toLowerCase().includes(search.toLowerCase()))))
+   .catch(error => console.log("Loi:", error));
 
-    const addTodo = async ()  =>{
+}, [search])
 
-      const res = await fetch("http://localhost:3000/todos",{
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        }, 
-        body: JSON.stringify({
-          title: title,
-          completed: false
-        })
-      })
 
-      const newTodo = await res.json()
+const addData = async () =>{
+  const res = await fetch(url, {
+    method: "POST", 
+    headers: {"Content-Type": "application/json"}, 
+    body: JSON.stringify({title: title, comp: false})
+  })
 
-      setTodo([...todos, newTodo])
-      setTitle("")
-    }
+  const MangB = await res.json()
+  setDoto(prev => [...prev,MangB])
+  setTitle("")
+}
 
-    const deleteTodo = async (id) => {
 
-      await fetch(`http://localhost:3000/todos/${id}`, {
-        method: "DELETE"
-      })
+const deleData = async (id) =>{
+  await fetch(`${url}/${id}`, {
+    method: "DELETE"
+  })  
+  setDoto(prev => prev.filter(a => a.id !== id)) ;
 
-      setTodo(todos.filter(todo => todo.id !== id))
-    }
-
+  
+}
   return (
-    <>
-      <div>
-        <h2>Bai so 5 ve fetch API</h2>
+    <div>
+      <input type="text" placeholder='search' onChange={(e)=> setSearch(e.target.value)} />
+      <input type="text" value={title} placeholder='title' onChange={(e) => setTitle(e.target.value)} />
 
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-
-        <button onClick={addTodo}>ADD Todo</button>
-
-        {todos.map(todo => (
-          <div key={todo.id}>
-            {todo.title}
-            <button onClick={() => deleteTodo(todo.id)}>
-              Delete
-            </button>
-          </div>
-        ))}
-
+      <button onClick={addData}>Them moi</button>
+    
+    {doto.map(a => (
+      <div key={a.id}>
+        {a.title}
+        <button onClick={()=> deleData(a.id)}>Xoa</button>
       </div>
-    </>
+    )
+      
+    )}
+    
+    
+    </div>
   )
 }
 
