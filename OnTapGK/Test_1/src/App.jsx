@@ -1,47 +1,47 @@
-import '../Data.json'
-import { useState, useEffect, useMemo, useRef } from 'react';
-import './App.css'
-import ComboBox from './components/ComboBox'
-import SearchBar from './components/SearchBar'
-import TodoList from './components/TodoList'
+import { useState, useMemo, useRef, useEffect } from 'react';
+import './App.css';
+import useFetchData from './useFetchData'; // Import custom hook
+import ComboBox from './components/ComboBox';
+import SearchBar from './components/SearchBar';
+import TodoList from './components/TodoList';
 
 function App() {
+  const [search, setSearch] = useState("");
+  const [status, setStatus] = useState("ALL");
+  const inPutRef = useRef(null);
 
-  const [products, setProducts] = useState([])
-  const [search, setSearch] = useState("")
-  const [status, setStatus] = useState("ALL")
-  const inPutRef = useRef(null)
+  // 1. Sử dụng Custom Hook
+  const { data: products, loading, error } = useFetchData("/Data.json");
 
-  useEffect(()=>{
-    fetch("/Data.json")
-    .then(res => res.json())
-    .then(data => setProducts(data))
-    .catch(err => console.log(err))
-    if(inPutRef.current){
-       inPutRef.current.focus()
+  // 2. Tự động focus vẫn để ở App vì nó liên quan đến DOM của SearchBar
+  useEffect(() => {
+    if (inPutRef.current) {
+      inPutRef.current.focus();
     }
-  }, [])
-
+  }, [loading]); // Focus sau khi loading xong cho chắc cú
 
   const locData = useMemo(() => {
-    return products.filter(e => // name thì tùy vào DAta mà thay đổi 
+    return products.filter(e =>
       e.name.toLowerCase().includes(search.toLowerCase()) &&
       (status === "ALL" || e.status === status)
-    )
-  }, [products, search, status])
+    );
+  }, [products, search, status]);
 
-
+  // 3. Xử lý các trường hợp hiển thị
+  if (error) return <div className="error">Lỗi: {error}</div>;
 
   return (
-    <>
     <div className="Name">
       <SearchBar value={search} onChange={setSearch} inputRef={inPutRef} /> 
       <ComboBox value={status} onChange={setStatus} />
-       <TodoList data={locData} /> 
+      
+      {loading ? (
+        <div className="loading">Đang tải dữ liệu...</div>
+      ) : (
+        <TodoList data={locData} />
+      )}
     </div>
-     
-    </>
-  )
+  );
 }
 
-export default App
+export default App;
