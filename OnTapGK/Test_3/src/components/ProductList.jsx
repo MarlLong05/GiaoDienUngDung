@@ -12,6 +12,7 @@ const ProductList = () => {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
     const inputRef = useRef(null)
+    const [error, setError] = useState(null)
     const [filter, setFilter] = useState("all");
     const categories = [...new Set(products.map((p) => p.category))];
 
@@ -23,7 +24,11 @@ const ProductList = () => {
                 const data = await UseFetchData()
                 setProducts(data)
                 setLoading(false)
-            }finally {
+            }catch(error){
+                setError(error.message)
+            }
+            
+            finally {
                 setLoading(false)
             }
         }
@@ -49,6 +54,7 @@ const ProductList = () => {
 
     }, [])
 
+    if(error) return <div> loi: {error}</div>
     if(loading) return <p>Loading...</p>
 
   return (
