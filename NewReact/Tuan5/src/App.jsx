@@ -10,7 +10,7 @@ import Dashboard from "./components/Dashboard"
 import DashboardProfile from "./components/DashboardProfile"
 import Orders from "./components/Orders"
 import Settings from "./components/Settings"
-
+import Checkout from "./components/Checkout"
 export default function App() {
   return (
     <BrowserRouter>
@@ -23,12 +23,14 @@ export default function App() {
         
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetail />} />  
-
+        <Route path="/checkout" element={<Checkout />} />
+        
         <Route path="/dashboard" element={<Dashboard />}>
       <Route path="profile" element={<DashboardProfile />} />
       <Route path="orders" element={<Orders />} />
       <Route path="settings" element={<Settings />} />
         </Route>
+        
 
         <Route path="*" element={<NotFound />} />
         
