@@ -1,23 +1,23 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import NotFound from "./components/NotFound"
+import { Routes, Route } from "react-router-dom";
+import NotFound from "./components/NotFound";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import Products from "./components/Products"
-import ProductDetail from "./components/ProductDetail"
-import Dashboard from "./components/Dashboard"
-import DashboardProfile from "./components/DashboardProfile"
-import Orders from "./components/Orders"
-import Settings from "./components/Settings"
-import Checkout from "./components/Checkout"
-import Login from "./components/Login"
-import Profile from "./components/Profile"
-import ProtectedRoute from "./components/ProtectedRoute"
+import Products from "./components/Products";
+import ProductDetail from "./components/ProductDetail";
+import Dashboard from "./components/Dashboard";
+import DashboardProfile from "./components/DashboardProfile";
+import Orders from "./components/Orders";
+import Settings from "./components/Settings";
+import Checkout from "./components/Checkout";
+import Login from "./components/Login";
+import Profile from "./components/Profile";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <>
       <Navbar />
 
       <Routes>
@@ -29,22 +29,26 @@ export default function App() {
         <Route path="/products/:id" element={<ProductDetail />} />  
         <Route path="/checkout" element={<Checkout />} />
 
+        {/* Nested dashboard */}
         <Route path="/dashboard" element={<Dashboard />}>
-      <Route path="profile" element={<DashboardProfile />} />
-      <Route path="orders" element={<Orders />} />
-      <Route path="settings" element={<Settings />} />
+          <Route path="profile" element={<DashboardProfile />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="settings" element={<Settings />} />
         </Route>
+
         <Route path="/login" element={<Login />} />
 
-        <Route path="/profile" element={
+        <Route
+          path="/profile"
+          element={
             <ProtectedRoute>
               <Profile />
-            </ProtectedRoute> }/>
-        
+            </ProtectedRoute>
+          }
+        />
 
         <Route path="*" element={<NotFound />} />
-        
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
