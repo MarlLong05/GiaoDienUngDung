@@ -1,4 +1,4 @@
-import { useUsers } from '../state/userState';
+import { useUsers } from '../state/useUsers';
 
 export default function UserList() {
   const { data, loading, error, fetchUsers } = useUsers();

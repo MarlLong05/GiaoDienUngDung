@@ -1,6 +1,5 @@
-import { createContext, useContext, useState, useEffect } from 'react';
-
-const UserContext = createContext();
+import { useState, useEffect, useCallback } from 'react';
+import { UserContext } from './context/UserContext';
 
 export const UserProvider = ({ children }) => {
   const [state, setState] = useState({
@@ -9,7 +8,7 @@ export const UserProvider = ({ children }) => {
     error: null,
   });
 
-  const fetchUsers = async () => {
+  const fetchUsers = useCallback(async () => {
     setState(prev => ({ ...prev, loading: true, error: null }));
 
     try {
@@ -30,7 +29,7 @@ export const UserProvider = ({ children }) => {
         error: err.message || 'Đã xảy ra lỗi khi tải dữ liệu',
       });
     }
-  };
+  }, []);
 
   // Fetch dữ liệu khi component mount
   useEffect(() => {
@@ -44,13 +43,3 @@ export const UserProvider = ({ children }) => {
   );
 };
 
-// Hook an toàn hơn
-export const useUsers = () => {
-  const context = useContext(UserContext);
-
-  if (context === undefined) {
-    throw new Error('useUsers must be used within a UserProvider');
-  }
-
-  return context;
-};
